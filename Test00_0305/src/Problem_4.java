@@ -3,27 +3,26 @@
  */
 public class Problem_4 {
 
-	@SuppressWarnings("null")
 	public static void main(String[] args) {
-		//가장 큰 대칭수를 찾는 문제 거꾸로 접근하는게 빠를듯.
-		//배열을 통해서 비교.
-		//num[0] == num[5]
-		// i = 999, j =999
-		char[] array = null;
 		
-		for(int num1=999; num1>=100; num1--){
-			for(int num2=999; num2>=100; num2--){
-				int result = num1 * num2;
-				
-				String str = Integer.toString(result);
-				
-				for(int i=0; i<6; i++){
-					array[i] = str.charAt(i);
-					System.out.print(array[i]);
+		for(int num1=100; num1<=999; num1++){
+			for(int num2=100; num2<=999; num2++){
+				int result = num1 * num2;				
+				if(result<100000){
+					
+				}else{
+					//System.out.println(num1+" x "+num2 +" = " +result);
+					int[] array = new int[6];
+					int temp = result;
+					for(int i=5; i>=0; i--){						
+						array[i] = temp%10;
+						temp = temp/10;
+					}
+					if(array[0]==array[5] && array[1]==array[4] && array[2]==array[3]){
+						System.out.println(result);
+					}					
 				}
-				
-				System.out.println(num1+" x "+num2 +" = " +result);
-			}
-		}
-	}
+			}//END for num2
+		}//END for num1
+	}//END main
 }
